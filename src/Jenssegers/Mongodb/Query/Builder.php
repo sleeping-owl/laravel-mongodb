@@ -1057,6 +1057,17 @@ class Builder extends BaseBuilder
      * @param array $where
      * @return array
      */
+    protected function compileWhereInRaw(array $where)
+    {
+        extract($where);
+
+        return [$column => ['$in' => array_values($values)]];
+    }
+
+    /**
+     * @param array $where
+     * @return array
+     */
     protected function compileWhereNotIn(array $where)
     {
         extract($where);
